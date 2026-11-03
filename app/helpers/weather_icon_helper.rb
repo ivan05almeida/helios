@@ -1,7 +1,7 @@
 module WeatherIconHelper
   def svg_for_condition_code(condition_code, is_day: true, style: "", class_name: "", **html_options)
     filename = resolve_filename(condition_code, is_day: is_day)
-    file_path = Rails.root.join("app", "assets", "images", "weather_icons", filename)
+    file_path = Rails.root.join("app", "assets", "images", "weathericons", filename)
 
     return nil unless File.exist?(file_path)
 
