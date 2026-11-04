@@ -34,6 +34,7 @@ group :development do
 end
 
 group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem "rspec-rails", "~> 8.0"
+  gem "vcr", "~> 6.4"
+  gem "webmock", "~> 3.34"
 end
