@@ -35,6 +35,7 @@ end
 
 group :test do
   gem "rspec-rails", "~> 8.0"
+  gem "simplecov", "~> 1.3"
   gem "vcr", "~> 6.4"
   gem "webmock", "~> 3.34"
 end
