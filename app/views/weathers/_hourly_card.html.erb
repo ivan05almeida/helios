@@ -1,0 +1,30 @@
+<div class="rounded-xl border border-black/10 bg-white shadow-xs
+            flex flex-col items-center gap-1.5 px-2 py-3 w-24 shrink-0">
+
+  <span class="text-xs text-neutral-500">
+    <%= display_time(hour.datetime, @location_timezone) %>
+  </span>
+
+  <div class="size-12 shrink-0 text-neutral-700 [&>svg]:w-full [&>svg]:h-full">
+    <%= svg_for_condition_code(hour.condition, is_day: hour.is_day) %>
+  </div>
+
+  <span class="text-sm font-semibold text-neutral-900">
+    <%= hour.temperature %><%= @units.temperature %>
+  </span>
+
+  <div class="w-full border-t border-black/5 pt-1.5 space-y-1">
+    <div class="flex items-center justify-between gap-1 text-xs text-neutral-500">
+      <span>Feels</span>
+      <span><%= hour.apparent_temperature %><%= @units.temperature %></span>
+    </div>
+    <div class="flex items-center justify-between gap-1 text-xs text-neutral-500">
+      <span>Hum.</span>
+      <span><%= hour.humidity %>%</span>
+    </div>
+    <div class="flex items-center justify-between gap-1 text-xs text-neutral-500">
+      <span>Rain</span>
+      <span><%= hour.precipitation_probability %>%</span>
+    </div>
+  </div>
+</div>

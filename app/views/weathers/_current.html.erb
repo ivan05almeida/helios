@@ -1,0 +1,68 @@
+<%# @forecast.current is a CurrentWeather value object %>
+<% current = @forecast.current %>
+
+<div class="rounded-xl border border-black/10 bg-white shadow-xs overflow-hidden mb-4">
+  <div class="p-5 flex items-start gap-6">
+    <div class="flex items-start gap-4 flex-1 min-w-0">
+      <div class="size-30 shrink-0 text-neutral-700 [&>svg]:w-full [&>svg]:h-full">
+        <%= svg_for_condition_code(current.condition, is_day: current.is_day) %>
+      </div>
+      <div class="min-w-0">
+        <h1 class="text-xl font-semibold text-neutral-900 truncate">
+          <%= @location_name %>
+        </h1>
+
+        <% if @cached %>
+            <span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-neutral-100 px-2 py-0.5 text-xs font-medium text-neutral-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clip-rule="evenodd" />
+                </svg>
+                Cached
+            </span>
+            <% else %>
+            <span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-3" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z" clip-rule="evenodd" />
+                </svg>
+                Fetched
+            </span>
+        <% end %>
+
+
+        <p class="text-4xl font-bold text-neutral-900 mt-1">
+          <%= current.temperature %><span class="text-2xl font-normal text-neutral-500"><%= @units.temperature %></span>
+        </p>
+
+        <p class="text-xs text-neutral-500">
+            <span> <%= display_time(current.datetime, @location_timezone) %></span>
+        </p>
+      </div>
+    </div>
+
+    <div class="shrink-0 rounded-lg bg-neutral-50 border border-black/10 divide-y divide-black/10 text-sm min-w-48">
+      <div class="flex items-center justify-between px-4 py-2.5 gap-4">
+        <span class="text-neutral-500">Feels like</span>
+        <span class="font-medium text-neutral-900">
+          <%= current.apparent_temperature %><%= @units.temperature %>
+        </span>
+      </div>
+      <div class="flex items-center justify-between px-4 py-2.5 gap-4">
+        <span class="text-neutral-500">Humidity</span>
+        <span class="font-medium text-neutral-900"><%= current.humidity %>%</span>
+      </div>
+      <div class="flex items-center justify-between px-4 py-2.5 gap-4">
+        <span class="text-neutral-500">Precipitation</span>
+        <span class="font-medium text-neutral-900">
+          <%= current.precipitation %> <%= @units.precipitation %>
+        </span>
+      </div>
+      <div class="flex items-center justify-between px-4 py-2.5 gap-4">
+        <span class="text-neutral-500">Wind</span>
+        <span class="font-medium text-neutral-900">
+          <%= current.wind_speed %> <%= @units.wind_speed %>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>

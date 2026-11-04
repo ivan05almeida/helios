@@ -1,0 +1,11 @@
+<div>
+  <h2 class="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3">
+    7-day forecast
+  </h2>
+
+  <div class="rounded-xl border border-black/10 bg-white shadow-xs overflow-hidden divide-y divide-black/10">
+    <% @forecast.daily.each do |day| %>
+      <%= render "daily_card", day: day %>
+    <% end %>
+  </div>
+</div>

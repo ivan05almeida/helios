@@ -1,3 +1,9 @@
+WeatherUnits = Data.define(
+    :temperature,
+    :wind_speed,
+    :precipitation
+)
+
 CurrentWeather = Data.define(
   :datetime,
   :temperature,
@@ -31,7 +37,7 @@ DailyForecast = Data.define(
 )
 
 WeatherForecast = Data.define(
-#   :zip_code,
+  :units,
   :current,
   :hourly,
   :daily

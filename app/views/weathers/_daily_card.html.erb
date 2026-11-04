@@ -1,0 +1,45 @@
+<div class="flex items-center gap-4 px-5 py-3">
+  <div class="w-24 shrink-0">
+    <p class="text-sm font-medium text-neutral-900">
+      <%= day.date.strftime("%A") %>
+    </p>
+    <p class="text-xs text-neutral-500">
+      <%= day.date.strftime("%-d %b") %>
+    </p>
+  </div>
+
+  <div class="size-7 shrink-0 text-neutral-700 [&>svg]:w-full [&>svg]:h-full">
+    <%= svg_for_condition_code(day.condition) %>
+  </div>
+
+  <div class="flex items-center gap-1.5 flex-1">
+    <span class="text-sm font-semibold text-neutral-900">
+      <%= day.max_temperature %><%= @units.temperature %>
+    </span>
+    <span class="text-xs text-neutral-400">/</span>
+    <span class="text-sm text-neutral-500">
+      <%= day.min_temperature %><%= @units.temperature %>
+    </span>
+  </div>
+
+  <div class="flex items-center gap-4 text-xs text-neutral-500 shrink-0">
+    <div class="flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5" viewBox="0 0 24 24" fill="currentColor">
+        <path fill-rule="evenodd" d="M11.47 1.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 01-1.06 1.06L12 3.56 8.78 6.53a.75.75 0 01-1.06-1.06l3.75-3.75zM12 2.25c.414 0 .75.336.75.75v14.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06L11.25 17.69V3a.75.75 0 01.75-.75z" clip-rule="evenodd"/>
+      </svg>
+      <span><%= day.precipitation %> <%= @units.precipitation %> (<%= day.precipitation_probability %>%)</span>
+    </div>
+    <div class="flex items-center gap-1">
+       
+    </div>
+    <div class="flex items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.6 4.6A2 2 0 1 1 11 8H2"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+      </svg>
+      <span><%= day.wind_speed %> <%= @units.wind_speed %></span>
+    </div>
+  </div>
+
+</div>

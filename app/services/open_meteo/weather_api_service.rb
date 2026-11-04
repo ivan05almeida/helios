@@ -40,7 +40,7 @@ class OpenMeteo::WeatherApiService < BaseService
   end
   
   def hourly_options
-    %w[temperature_2m relative_humidity_2m apparent_temperature precipitation_probability precipitation weather_code is_day].join(',')
+    %w[temperature_2m relative_humidity_2m apparent_temperature precipitation_probability weather_code is_day].join(',')
   end
 
   def daily_options
