@@ -21,7 +21,7 @@ class WeatherService
 
     cached_hit = true
 
-    forecast_data = Rails.cache.fetch(cache_key, expires_in: CACHE_TTL, force: force) do
+    forecast_data = Rails.cache.fetch(cache_key, expires_in: CACHE_TTL, force: force, race_condition_ttl: 10.seconds) do
       cached_hit = false
       @adapter.forecast(lat: lat, long: long)
     end

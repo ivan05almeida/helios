@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
-class OpenMeteo::WeatherApiService < BaseService
+class OpenMeteo::WeatherApiService
+  include FaradayConnection
+
   class InvalidUnitError < StandardError; end
+  class ClientError < StandardError; end
+  class ServerError < StandardError; end
 
   BASE_URL = "https://api.open-meteo.com/v1/"
   FORECAST_HOURS = 24.freeze
@@ -15,13 +19,13 @@ class OpenMeteo::WeatherApiService < BaseService
   end
 
   def forecast(lat:, long:, forecast_days: FORECAST_DEFAULT_DAYS)
-    conn.get("forecast", forecast_params(lat, long, forecast_days)).body
+    conn(BASE_URL).get("forecast", forecast_params(lat, long, forecast_days)).body
   end
 
   private
 
-  def conn
-    super do |builder|
+  def conn(base_url)
+    super(base_url) do |builder|
       builder.options.timeout      = 5
       builder.options.open_timeout = 2
     end
@@ -74,6 +78,19 @@ class OpenMeteo::WeatherApiService < BaseService
 
   def metric?
     @unit == :metric
+  end
+
+  def handle_response(response)
+    case response.status
+    when 200..299
+      JSON.parse(response.body, symbolize_names: true)
+    when 400..499
+      raise ClientError, "Client Error #{response.status}: #{response.body}"
+    when 500..599
+      raise ServerError, "Server Error #{response.status}: #{response.body}"
+    else
+      raise Faraday::Error, "Unexpected status #{response.status}: #{response.body}"
+    end
   end
 
   class << self
