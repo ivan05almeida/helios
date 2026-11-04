@@ -15,7 +15,7 @@ class OpenMeteo::WeatherApiService < BaseService
   end
 
   def forecast(lat:, long:, forecast_days: FORECAST_DEFAULT_DAYS)
-    conn.get('forecast', forecast_params(lat, long, forecast_days)).body
+    conn.get("forecast", forecast_params(lat, long, forecast_days)).body
   end
 
   private
@@ -31,37 +31,37 @@ class OpenMeteo::WeatherApiService < BaseService
       forecast_days: forecast_days,
       temperature_unit: temperature_unit,
       wind_speed_unit: wind_speed_unit,
-      precipitation_unit: precipitation_unit,
+      precipitation_unit: precipitation_unit
     }.compact
   end
 
   def current_weather_options
-    %w[temperature_2m relative_humidity_2m precipitation weather_code wind_speed_10m apparent_temperature is_day].join(',')
+    %w[temperature_2m relative_humidity_2m precipitation weather_code wind_speed_10m apparent_temperature is_day].join(",")
   end
-  
+
   def hourly_options
-    %w[temperature_2m relative_humidity_2m apparent_temperature precipitation_probability weather_code is_day].join(',')
+    %w[temperature_2m relative_humidity_2m apparent_temperature precipitation_probability weather_code is_day].join(",")
   end
 
   def daily_options
-    %w[temperature_2m_max temperature_2m_min precipitation_probability_max precipitation_sum weather_code wind_speed_10m_max].join(',')
+    %w[temperature_2m_max temperature_2m_min precipitation_probability_max precipitation_sum weather_code wind_speed_10m_max].join(",")
   end
-  
+
   def temperature_unit
     return if metric?
-    
+
     :fahrenheit
   end
 
   def wind_speed_unit
     return if metric?
-    
+
     :mph
   end
 
   def precipitation_unit
     return if metric?
-    
+
     :inch
   end
 

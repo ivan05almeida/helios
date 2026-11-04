@@ -11,9 +11,9 @@ module WeatherIconHelper
 
     return nil unless svg
 
-    svg["style"] = [svg["style"], style].compact.reject(&:blank?).join("; ")
-    svg["class"] = [svg["class"], class_name].compact.reject(&:blank?).join(" ")
-    
+    svg["style"] = [ svg["style"], style ].compact.reject(&:blank?).join("; ")
+    svg["class"] = [ svg["class"], class_name ].compact.reject(&:blank?).join(" ")
+
     html_options.each { |key, value| svg[key.to_s.dasherize] = value }
 
     doc.to_html.html_safe

@@ -1,5 +1,5 @@
-require 'faraday'
-require 'json'
+require "faraday"
+require "json"
 
 class BaseService
   class ClientError < StandardError; end
@@ -11,7 +11,7 @@ class BaseService
 
   def conn
     Faraday.new(url: self.class::BASE_URL) do |builder|
-      builder.headers['User-Agent'] = HELIOS_USER_AGENT
+      builder.headers["User-Agent"] = HELIOS_USER_AGENT
       builder.response :json
       builder.response :raise_error
       builder.response :logger
