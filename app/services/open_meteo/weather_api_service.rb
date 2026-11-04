@@ -20,6 +20,13 @@ class OpenMeteo::WeatherApiService < BaseService
 
   private
 
+  def conn
+    super do |builder|
+      builder.options.timeout      = 5
+      builder.options.open_timeout = 2
+    end
+  end
+
   def forecast_params(lat, long, forecast_days)
     {
       latitude: lat,
