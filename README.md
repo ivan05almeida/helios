@@ -5,6 +5,11 @@ retrieves forecast data from Open-Meteo, and displays current conditions,
 hourly and 7-day forecasts. Results are cached for 30 minutes and a cache
 indicator is shown to the user.
 
+## Preview
+
+![Helios weather forecast for Cupertino](docs/screenshot.png)
+
+
 ## Requirements
 
 - Ruby 3.4.12
