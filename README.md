@@ -170,9 +170,9 @@ the cache for a single request.
 
 API errors are caught at the service layer and propagated as typed errors:
 
-- `OpenMeteo::ApiError` — base error (connection failures, circuit open)
-- `OpenMeteo::ClientError` — 4xx responses (e.g. 429 rate limit)
-- `OpenMeteo::ServerError` — 5xx responses
+- `OpenMeteo::WeatherApiService::ApiError` — base error (connection failures, circuit open)
+- `OpenMeteo::WeatherApiService::ClientError` — 4xx responses (e.g. 429 rate limit)
+- `OpenMeteo::WeatherApiService::ServerError` — 5xx responses
 
 
 ---
