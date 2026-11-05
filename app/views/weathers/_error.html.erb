@@ -1,0 +1,30 @@
+<div class="flex items-start gap-4 rounded-xl border border-red-200 bg-red-50 p-5">
+
+  <div class="size-8 shrink-0 rounded-lg bg-red-100 flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="size-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+      <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+    </svg>
+  </div>
+
+  <div class="flex-1 min-w-0">
+    <p class="text-sm font-semibold text-red-700">
+      Unable to fetch weather
+    </p>
+    <p class="text-sm text-red-600 mt-0.5">
+      <%= message %>
+    </p>
+
+    <div class="mt-4">
+      <%= link_to new_weather_path,
+            data: { turbo_frame: "weather_result" },
+            class: "inline-flex items-center gap-1.5 text-sm font-medium
+                    text-red-700 hover:text-red-900 transition-colors" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+        </svg>
+        Try again
+      <% end %>
+    </div>
+  </div>
+
+</div>

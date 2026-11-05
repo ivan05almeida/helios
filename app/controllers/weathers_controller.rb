@@ -13,9 +13,18 @@ class WeathersController < ApplicationController
     @location_name     = params[:name]
     @zipcode           = params[:zipcode]
     @location_timezone = ActiveSupport::TimeZone[params[:location_timezone]] || ActiveSupport::TimeZone["UTC"]
-    @timezone          = ActiveSupport::TimeZone[params[:timezone]] || ActiveSupport::TimeZone["UTC"]
     @forecast          = result[:forecast]
     @cached            = result[:cached]
     @units             = @forecast.units
+  rescue OpenMeteo::WeatherApiService::ClientError => e
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("weather_result", partial: "weathers/error", locals: { message: e.message })
+      end
+      format.html do 
+        @error_message = e.message
+        render :new
+      end
+    end
   end
 end

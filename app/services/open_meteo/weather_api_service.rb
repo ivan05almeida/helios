@@ -4,9 +4,9 @@ class OpenMeteo::WeatherApiService
   include FaradayConnection
 
   class InvalidUnitError < StandardError; end
-  class OpenMeteo::ApiError < StandardError; end
-  class OpenMeteo::ClientError < OpenMeteo::ApiError; end
-  class OpenMeteo::ServerError < OpenMeteo::ApiError; end
+  class ApiError < StandardError; end
+  class ClientError < ApiError; end
+  class ServerError < ApiError; end
 
   BASE_URL = "https://api.open-meteo.com/v1/"
   FORECAST_HOURS = 24.freeze
@@ -88,16 +88,16 @@ class OpenMeteo::WeatherApiService
   def handle_response
     yield
   rescue Faraday::ClientError => e
-    raise OpenMeteo::ClientError, "Client error: #{e.message}"
+    raise ClientError, "Client error: #{e.message}"
   rescue Faraday::ServerError => e
-    raise OpenMeteo::ServerError, "Server error: #{e.message}"
+    raise ServerError, "Server error: #{e.message}"
   rescue Faraday::ConnectionFailed => e
-    raise OpenMeteo::ApiError, "Connection failed: #{e.message}"
+    raise ApiError, "Connection failed: #{e.message}"
   end
 
   def handle_fallback(error)
     Rails.logger.error("Open-Meteo circuit open: #{error&.message}")
-    raise OpenMeteo::ApiError, "Weather service is currently unavailable. Please try again later."
+    raise ApiError, "Weather service is currently unavailable. Please try again later."
   end
 
   class << self

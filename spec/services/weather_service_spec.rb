@@ -198,7 +198,7 @@ RSpec.describe WeatherService do
 
         expect {
           service.forecast(lat: lat, long: long, force: true)
-        }.to raise_error(OpenMeteo::ApiError, /Connection failed/)
+        }.to raise_error(OpenMeteo::WeatherApiService::ApiError, /Connection failed/)
       end
 
       it "raises ApiError on 500 internal server error" do
@@ -207,7 +207,7 @@ RSpec.describe WeatherService do
 
         expect {
           service.forecast(lat: lat, long: long, force: true)
-        }.to raise_error(OpenMeteo::ServerError, /Server error/)
+        }.to raise_error(OpenMeteo::WeatherApiService::ServerError, /Server error/)
       end
 
       it "raises ApiError on 429 too many requests" do
@@ -216,7 +216,7 @@ RSpec.describe WeatherService do
 
         expect {
           service.forecast(lat: lat, long: long, force: true)
-        }.to raise_error(OpenMeteo::ClientError, /Client error/)
+        }.to raise_error(OpenMeteo::WeatherApiService::ClientError, /Client error/)
       end
 
       it "opens the circuit after 3 consecutive failures" do
@@ -229,7 +229,7 @@ RSpec.describe WeatherService do
 
         expect {
           service.forecast(lat: lat, long: long, force: true)
-        }.to raise_error(OpenMeteo::ApiError, /currently unavailable/)
+        }.to raise_error(OpenMeteo::WeatherApiService::ApiError, /currently unavailable/)
 
         expect(WebMock).to have_requested(:get, /api.open-meteo.com/).times(3)
       end
