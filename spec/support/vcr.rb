@@ -10,3 +10,9 @@ VCR.configure do |config|
     match_requests_on: [ :method, :uri ]
   }
 end
+
+RSpec.configure do |config|
+  config.after(:each, :vcr) do
+    WebMock.reset!
+  end
+end

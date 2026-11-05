@@ -4,6 +4,7 @@ gem "rails", "~> 8.1.4"
 
 gem "bootsnap", require: false
 gem "faraday", "~> 2.15"
+gem "faraday-retry", "~> 2.4"
 gem "importmap-rails"
 gem "jbuilder"
 gem "kamal", require: false
@@ -14,6 +15,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "sqlite3", ">= 2.1"
 gem "stimulus-rails"
+gem "stoplight", "~> 6.0"
 gem "tailwindcss-rails", "~> 4.7"
 gem "thruster", require: false
 gem "turbo-rails"

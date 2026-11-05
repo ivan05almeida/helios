@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.open-meteo.com/v1/forecast?current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,apparent_temperature,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,weather_code,wind_speed_10m_max&forecast_days=7&forecast_hours=24&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,weather_code,is_day&latitude=-23.56&longitude=-46.63
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'Helios/1.0 (contact: ivan05filho@gmail.com)'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 05 Nov 2026 01:28:56 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Cost:
+      - '1.9'
+      X-Ratelimit-Limit:
+      - '600.0'
+      X-Ratelimit-Remaining:
+      - '562.0'
+      X-Ratelimit-Reset:
+      - '1793842158'
+      X-Ratelimit-Window:
+      - '60'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJsYXRpdHVkZSI6LTIzLjU4NTIzOCwibG9uZ2l0dWRlIjotNDYuNjU5NjM3LCJnZW5lcmF0aW9udGltZV9tcyI6MC43MjAzODE3MzY3NTUzNzExLCJ1dGNfb2Zmc2V0X3NlY29uZHMiOjAsInRpbWV6b25lIjoiR01UIiwidGltZXpvbmVfYWJicmV2aWF0aW9uIjoiR01UIiwiZWxldmF0aW9uIjo3MzIuMCwiY3VycmVudF91bml0cyI6eyJ0aW1lIjoiaXNvODYwMSIsImludGVydmFsIjoic2Vjb25kcyIsInRlbXBlcmF0dXJlXzJtIjoiwrBDIiwicmVsYXRpdmVfaHVtaWRpdHlfMm0iOiIlIiwicHJlY2lwaXRhdGlvbiI6Im1tIiwid2VhdGhlcl9jb2RlIjoid21vIGNvZGUiLCJ3aW5kX3NwZWVkXzEwbSI6ImttL2giLCJhcHBhcmVudF90ZW1wZXJhdHVyZSI6IsKwQyIsImlzX2RheSI6IiJ9LCJjdXJyZW50Ijp7InRpbWUiOiIyMDI2LTExLTA1VDAxOjE1IiwiaW50ZXJ2YWwiOjkwMCwidGVtcGVyYXR1cmVfMm0iOjI0LjEsInJlbGF0aXZlX2h1bWlkaXR5XzJtIjo4NCwicHJlY2lwaXRhdGlvbiI6MC4wMCwid2VhdGhlcl9jb2RlIjozLCJ3aW5kX3NwZWVkXzEwbSI6Mi4wLCJhcHBhcmVudF90ZW1wZXJhdHVyZSI6MjguMiwiaXNfZGF5IjowfSwiaG91cmx5X3VuaXRzIjp7InRpbWUiOiJpc284NjAxIiwidGVtcGVyYXR1cmVfMm0iOiLCsEMiLCJyZWxhdGl2ZV9odW1pZGl0eV8ybSI6IiUiLCJhcHBhcmVudF90ZW1wZXJhdHVyZSI6IsKwQyIsInByZWNpcGl0YXRpb25fcHJvYmFiaWxpdHkiOiIlIiwid2VhdGhlcl9jb2RlIjoid21vIGNvZGUiLCJpc19kYXkiOiIifSwiaG91cmx5Ijp7InRpbWUiOlsiMjAyNi0xMS0wNVQwMTowMCIsIjIwMjYtMTEtMDVUMDI6MDAiLCIyMDI2LTExLTA1VDAzOjAwIiwiMjAyNi0xMS0wNVQwNDowMCIsIjIwMjYtMTEtMDVUMDU6MDAiLCIyMDI2LTExLTA1VDA2OjAwIiwiMjAyNi0xMS0wNVQwNzowMCIsIjIwMjYtMTEtMDVUMDg6MDAiLCIyMDI2LTExLTA1VDA5OjAwIiwiMjAyNi0xMS0wNVQxMDowMCIsIjIwMjYtMTEtMDVUMTE6MDAiLCIyMDI2LTExLTA1VDEyOjAwIiwiMjAyNi0xMS0wNVQxMzowMCIsIjIwMjYtMTEtMDVUMTQ6MDAiLCIyMDI2LTExLTA1VDE1OjAwIiwiMjAyNi0xMS0wNVQxNjowMCIsIjIwMjYtMTEtMDVUMTc6MDAiLCIyMDI2LTExLTA1VDE4OjAwIiwiMjAyNi0xMS0wNVQxOTowMCIsIjIwMjYtMTEtMDVUMjA6MDAiLCIyMDI2LTExLTA1VDIxOjAwIiwiMjAyNi0xMS0wNVQyMjowMCIsIjIwMjYtMTEtMDVUMjM6MDAiLCIyMDI2LTExLTA2VDAwOjAwIl0sInRlbXBlcmF0dXJlXzJtIjpbMjQuMSwyNC4xLDIzLjksMjQuMCwyNC4wLDI0LjAsMjMuOSwyMy44LDI0LjMsMjUuOCwyNy4xLDI2LjAsMjQuMSwyNy41LDI4LjIsMjguOCwyOC44LDI4LjEsMjIuNCwyMy41LDIzLjIsMjIuMSwyMi4xLDIxLjZdLCJyZWxhdGl2ZV9odW1pZGl0eV8ybSI6Wzg0LDg0LDgzLDc3LDcyLDcxLDcyLDcxLDY3LDYzLDYwLDY2LDc1LDYxLDU5LDU3LDU4LDYxLDg4LDg3LDg5LDkyLDkyLDk1XSwiYXBwYXJlbnRfdGVtcGVyYXR1cmUiOlsyOC4yLDI4LjEsMjcuNSwyNi41LDI2LjAsMjUuOCwyNS44LDI1LjQsMjUuNSwyNy40LDI4LjYsMjYuOCwyNS42LDI4LjcsMjkuNywzMC4yLDMxLjAsMzAuMywyNS44LDI3LjQsMjYuNiwyNS41LDI2LjAsMjUuMl0sInByZWNpcGl0YXRpb25fcHJvYmFiaWxpdHkiOlswLDAsMCwwLDAsMCwxLDQsOCwxNSwyNSwzNSw0Niw1Nyw2Nyw3Niw4NSw5MCw5MSw5MCw4OCw4Niw4Myw4MF0sIndlYXRoZXJfY29kZSI6WzMsMywzLDMsMywzLDMsMywyLDMsMyw1MSw1MSwzLDMsMyw1MSw1MSw5Niw1NSw1Myw5NSw1MSw1M10sImlzX2RheSI6WzAsMCwwLDAsMCwwLDAsMCwxLDEsMSwxLDEsMSwxLDEsMSwxLDEsMSwxLDAsMCwwXX0sImRhaWx5X3VuaXRzIjp7InRpbWUiOiJpc284NjAxIiwidGVtcGVyYXR1cmVfMm1fbWF4IjoiwrBDIiwidGVtcGVyYXR1cmVfMm1fbWluIjoiwrBDIiwicHJlY2lwaXRhdGlvbl9wcm9iYWJpbGl0eV9tYXgiOiIlIiwicHJlY2lwaXRhdGlvbl9zdW0iOiJtbSIsIndlYXRoZXJfY29kZSI6IndtbyBjb2RlIiwid2luZF9zcGVlZF8xMG1fbWF4Ijoia20vaCJ9LCJkYWlseSI6eyJ0aW1lIjpbIjIwMjYtMTEtMDUiLCIyMDI2LTExLTA2IiwiMjAyNi0xMS0wNyIsIjIwMjYtMTEtMDgiLCIyMDI2LTExLTA5IiwiMjAyNi0xMS0xMCIsIjIwMjYtMTEtMTEiXSwidGVtcGVyYXR1cmVfMm1fbWF4IjpbMjguOSwyMy40LDMwLjIsMjIuMywxNy44LDE5LjksMjQuMV0sInRlbXBlcmF0dXJlXzJtX21pbiI6WzIxLjcsMTguNywxOS4xLDE0LjcsMTMuOSwxMi45LDEyLjVdLCJwcmVjaXBpdGF0aW9uX3Byb2JhYmlsaXR5X21heCI6WzkxLDgwLDkwLDg4LDMzLDYsMTJdLCJwcmVjaXBpdGF0aW9uX3N1bSI6WzguOTAsMy4wMCw2LjAwLDMxLjgwLDAuNDAsMC40MCwwLjAwXSwid2VhdGhlcl9jb2RlIjpbOTYsNTUsOTYsOTUsNTEsNTEsM10sIndpbmRfc3BlZWRfMTBtX21heCI6WzIwLjMsMTAuNCwxOS4yLDE1LjYsMTYuMywxNS43LDExLjVdfX0=
+  recorded_at: Thu, 05 Nov 2026 01:28:56 GMT
+recorded_with: VCR 6.4.1
