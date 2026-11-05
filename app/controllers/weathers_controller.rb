@@ -21,7 +21,7 @@ class WeathersController < ApplicationController
       format.turbo_stream do
         render turbo_stream: turbo_stream.update("weather_result", partial: "weathers/error", locals: { message: e.message })
       end
-      format.html do 
+      format.html do
         @error_message = e.message
         render :new
       end
